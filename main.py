@@ -1,45 +1,35 @@
-import math
-import string
-
-def main(n): # n mustn't be 2 or 5
+def main(num): # n mustn't be 2 or 5
     # https://en.wikipedia.org/wiki/Reciprocals_of_primes - inspired by William Shanks
-    k = 0
+    if num == 2 or num == 5:
+        return "there is no loop to be found"
 
-    oop = 1/n
-    BOOL = False
-
-    while BOOL == False:
-        if n > 10**k and n < 10**(k+1):
-            #nz = k
-            BOOL = True
-
-        else:
-            k += 1
+    elif num == 3:
+        return 1
     
-    # loop-length
-    r = [10**(k+1)]
-    Loop = False
-    i = 0
+    else:
+        k = len(str(num))-1
 
-    while Loop == False:
-        if i == 0:
-            rs = (r[0]%n)*10
-            r.append(rs)
+        rests = [10**(k+1)]
+        Loop = False
+        index = 0
 
-            if r[1] == r[0]:
-                return i
-                Loop = True
-            else:
-                i += 1
-        
-        elif i != 0:
-            rs = (r[i]%n)*10
-            r.append(rs)
+        while Loop == False:
+            if index == 0:
+                rest = (rests[0]%num)*10
+                rests.append(rest)
 
-            if r[i] == r[0]:
-                return i
-                Loop = True
-            else:
-                i += 1
+                if rests[1] == rests[0]:
+                    return index
+                    Loop = True
+                else:
+                    index += 1
+            
+            elif index != 0:
+                rest = (rests[index]%num)*10
+                rests.append(rest)
 
-print(main(7))
+                if rests[index] == rests[0]:
+                    return index
+                    Loop = True
+                else:
+                    index += 1
