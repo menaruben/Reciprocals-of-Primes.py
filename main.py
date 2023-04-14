@@ -1,4 +1,4 @@
-def main(num): # n mustn't be 2 or 5
+def main(num: int): # n mustn't be 2 or 5
     # https://en.wikipedia.org/wiki/Reciprocals_of_primes - inspired by William Shanks
     if num == 2 or num == 5:
         return "there is no loop to be found"
